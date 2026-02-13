@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET Academy 🎓</title>
+    <title>BM NET Academy</title>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
-        const Pi = window.Pi;
-        Pi.init({ version: "2.0" });
+        window.Pi.init({ version: "2.0" });
     </script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0b0e14; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .container { width: 90%; max-width: 400px; background: #1a1d26; border-radius: 30px; padding: 25px; text-align: center; border: 1px solid #333; }
-        .title { color: #e5a93d; font-size: 1.6em; font-weight: bold; margin-bottom: 20px; }
-        .card { background: #252a35; padding: 15px; border-radius: 15px; margin: 10px 0; text-align: right; border-right: 4px solid #00c853; }
+        body { font-family: sans-serif; background-color: #0b0e14; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { width: 90%; max-width: 400px; background: #1a1d26; border-radius: 25px; padding: 30px; text-align: center; border: 1px solid #333; }
+        .title { color: #e5a93d; font-size: 1.8em; margin-bottom: 20px; font-weight: bold; }
+        .card { background: #252a35; padding: 15px; border-radius: 15px; margin: 10px 0; text-align: right; border-right: 5px solid #00c853; }
         .btn { 
-            background: linear-gradient(90deg, #e5a93d, #d49835); 
-            color: white; border: none; padding: 20px; border-radius: 40px; 
+            background: #e5a93d; color: white; border: none; padding: 20px; border-radius: 40px; 
             font-size: 1.3em; font-weight: bold; width: 100%; margin-top: 20px; 
-            cursor: pointer; display: block; text-decoration: none;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(229, 169, 61, 0.4);
         }
     </style>
 </head>
@@ -26,27 +24,17 @@
 
 <div class="container">
     <div class="title">BM NET Academy 🎓</div>
-    
     <div class="card"><strong>🧠 Stellar AI Analyzer</strong><p>تحليل الأكواد وتوصيات ذكية فورية.</p></div>
     <div class="card"><strong>🛡️ الأمن السيبراني</strong><p>احتراف الحماية وصناعة الثروة الرقمية.</p></div>
 
-    <button onclick="goToApp()" class="btn">دخول الأكاديمية (3.14π)</button>
+    <button id="entry-button" class="btn">دخول الأكاديمية (3.14π)</button>
 </div>
 
 <script>
-    async function goToApp() {
-        try {
-            // أولاً: محاولة التوثيق عبر Pi Browser
-            const auth = await Pi.authenticate(['username', 'payments'], function(payment){});
-            if (auth) {
-                // إذا نجح التوثيق، يحوله للرابط الرسمي للتطبيق
-                window.location.href = "https://bmnet9733.pinet.com";
-            }
-        } catch (e) {
-            // إذا كان خارج متصفح باي، يفتح الرابط مباشرة كخيار احتياطي
-            window.location.href = "https://bmnet9733.pinet.com";
-        }
-    }
+    document.getElementById('entry-button').addEventListener('click', function() {
+        // التحويل المباشر للرابط الرسمي الخاص بك
+        window.location.href = "https://bmnet9733.pinet.com";
+    });
 </script>
 
 </body>
