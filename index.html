@@ -3,59 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET Academy - Stellar AI</title>
-    
+    <title>BM NET Academy 🎓</title>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
         const Pi = window.Pi;
         Pi.init({ version: "2.0" });
-
-        // نظام التحويل التلقائي لبيئة باي الآمنة
-        if (window.location.href.includes("pinet.com") || window.location.href.includes("pi")) {
-            window.location.replace("pi://bmnet9733.pinet.com");
-        }
     </script>
-
     <style>
-        /* التنسيق الاحترافي بناءً على تصميمك الأخير */
-        :root { --bg-dark: #0b0e14; --pi-gold: #e5a93d; --emerald: #00c853; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0b0e14; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
         .container { width: 90%; max-width: 400px; background: #1a1d26; border-radius: 30px; padding: 25px; text-align: center; border: 1px solid #333; }
-        .badge { background: #5e2a84; padding: 8px 15px; border-radius: 20px; font-size: 0.8em; margin-bottom: 20px; display: inline-block; font-weight: bold; }
-        .card { background: #252a35; padding: 18px; border-radius: 18px; margin: 12px 0; text-align: right; border-right: 5px solid var(--emerald); }
-        .card strong { color: var(--emerald); display: block; margin-bottom: 5px; }
-        /* زر الدخول المحدث */
-        .btn { background: linear-gradient(90deg, var(--pi-gold), #d49835); color: white; border: none; padding: 20px; border-radius: 40px; font-size: 1.3em; font-weight: bold; width: 100%; margin-top: 30px; cursor: pointer; box-shadow: 0 8px 20px rgba(229, 169, 61, 0.3); }
+        .title { color: #e5a93d; font-size: 1.6em; font-weight: bold; margin-bottom: 20px; }
+        .card { background: #252a35; padding: 15px; border-radius: 15px; margin: 10px 0; text-align: right; border-right: 4px solid #00c853; }
+        .btn { 
+            background: linear-gradient(90deg, #e5a93d, #d49835); 
+            color: white; border: none; padding: 20px; border-radius: 40px; 
+            font-size: 1.3em; font-weight: bold; width: 100%; margin-top: 20px; 
+            cursor: pointer; display: block; text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="badge">🚀 Powered by Deep Star AI</div>
-    <h2 style="color: var(--pi-gold);">BM NET Academy 🎓</h2>
+    <div class="title">BM NET Academy 🎓</div>
+    
+    <div class="card"><strong>🧠 Stellar AI Analyzer</strong><p>تحليل الأكواد وتوصيات ذكية فورية.</p></div>
+    <div class="card"><strong>🛡️ الأمن السيبراني</strong><p>احتراف الحماية وصناعة الثروة الرقمية.</p></div>
 
-    <div class="card"><strong>🧠 Stellar AI Analyzer 🧠</strong><p>تحليل عميق للأكواد مع فحص الأمان وتوصيات ذكية فورية.</p></div>
-    <div class="card"><strong>🛡️ الأمن السيبراني 🛡️</strong><p>تعلم حماية الأنظمة وصناعة الثروة الرقمية في 9 أيام.</p></div>
-    <div class="card"><strong>💎 اقتصاد الـ Web3 💎</strong><p>توثيق الشهادات على البلوكشين ونظام دفع 3.14π.</p></div>
-
-    <button onclick="startLearning()" class="btn">دخول الأكاديمية (3.14π)</button>
+    <button onclick="goToApp()" class="btn">دخول الأكاديمية (3.14π)</button>
 </div>
 
 <script>
-    async function startLearning() {
+    async function goToApp() {
         try {
-            // 1. بدء التوثيق الرسمي لشبكة باي
-            const auth = await Pi.authenticate(['username', 'payments'], function(payment) {
-                console.log("Payment Processing...");
-            });
-
+            // أولاً: محاولة التوثيق عبر Pi Browser
+            const auth = await Pi.authenticate(['username', 'payments'], function(payment){});
             if (auth) {
-                // 2. التحويل التلقائي للرابط الرسمي بعد نجاح الدخول
-                window.location.replace("pi://bmnet9733.pinet.com");
+                // إذا نجح التوثيق، يحوله للرابط الرسمي للتطبيق
+                window.location.href = "https://bmnet9733.pinet.com";
             }
         } catch (e) {
-            // تنبيه المستخدم إذا كان خارج متصفح باي
-            alert("يرجى فتح التطبيق من داخل Pi Browser لتفعيل محرك Stellar AI.");
+            // إذا كان خارج متصفح باي، يفتح الرابط مباشرة كخيار احتياطي
+            window.location.href = "https://bmnet9733.pinet.com";
         }
     }
 </script>
