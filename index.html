@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BM NET - Stellar AI Academy 🎓</title>
+    
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    
+    <script>
+        const Pi = window.Pi;
+        Pi.init({ version: "2.0" });
 
+        // نظام التحويل التلقائي لبيئة باي الآمنة
+        if (window.location.href.includes("pinet.com") || window.location.href.includes("pi")) {
+            window.location.replace("pi://bmnet9733.pinet.com");
+        }
+    </script>
+
+    <style>
+        :root { --primary-dark: #0b0e14; --emerald-green: #00c853; --pi-gold: #e5a93d; --stellar-purple: #5e2a84; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--primary-dark); color: white; margin: 0; padding: 20px; text-align: center; }
+        .app-container { max-width: 500px; margin: auto; background: #1a1d26; border-radius: 25px; padding: 30px; border: 1px solid #333; box-shadow: 0 10px 40px rgba(0, 200, 83, 0.1); }
+        .ai-header { color: var(--pi-gold); font-size: 1.5em; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid var(--stellar-purple); padding-bottom: 10px; }
+        .feature-box { background: #252a35; padding: 15px; border-radius: 15px; margin: 15px 0; text-align: right; border-right: 4px solid var(--emerald-green); }
+        .status-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; background: var(--stellar-purple); font-size: 0.8em; margin-bottom: 10px; }
+        .cta-btn { background: linear-gradient(90deg, var(--pi-gold), #d49835); color: white; border: none; padding: 18px 40px; border-radius: 35px; font-size: 1.2em; font-weight: bold; text-decoration: none; display: block; width: 100%; box-sizing: border-box; margin-top: 25px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="status-badge">Powered by Deep Star AI 🚀</div>
+    <div class="ai-header">🎓 BM NET Academy</div>
+
+    <div class="feature-box">
+        <strong>🧠 Stellar AI Analyzer:</strong>
+        <p>تحليل عميق للكود مع فحص الأمان والأداء وتوصيات ذكية للتحسين.</p>
+    </div>
+
+    <div class="feature-box">
+        <strong>🛡️ الأمن السيبراني:</strong>
+        <p>احتراف لغات البرمجة (C++, Rust) وحماية الأنظمة الرقمية.</p>
+    </div>
+
+    <div class="feature-box">
+        <strong>💰 اقتصاد الـ Web3:</strong>
+        <p>مستويات تعليمية مرتبطة بنظام الدفع الرسمي (3.14π).</p>
+    </div>
+
+    <button onclick="startLearning()" class="cta-btn">دخول الأكاديمية (3.14π)</button>
+</div>
+
+<script>
+    async function startLearning() {
+        try {
+            // نظام التوثيق والدفع المدمج
+            const auth = await Pi.authenticate(['username', 'payments'], function(payment) {
+                console.log("Payment in progress...");
+            });
+            if (auth) {
+                // تفعيل محرك Stellar AI عند الدخول
+                window.location.replace("pi://bmnet9733.pinet.com");
+            }
+        } catch (e) {
+            alert("يرجى الدخول من متصفح Pi للاستفادة من Stellar AI.");
+        }
+    }
+
+    // دالة محاكاة لتحليل الكود (Deep Star AI)
+    function stellarAudit(code) {
+        console.log("Deep Star AI auditing started...");
+    }
+</script>
+
+</body>
+</html>
