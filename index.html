@@ -3,39 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET Academy</title>
+    <title>BM NET - بوابة التعليم الصارم</title>
+    
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
-        window.Pi.init({ version: "2.0" });
+        const Pi = window.Pi;
+        Pi.init({ version: "2.0" });
     </script>
+
     <style>
-        body { font-family: sans-serif; background-color: #0b0e14; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .container { width: 90%; max-width: 400px; background: #1a1d26; border-radius: 25px; padding: 30px; text-align: center; border: 1px solid #333; }
-        .title { color: #e5a93d; font-size: 1.8em; margin-bottom: 20px; font-weight: bold; }
-        .card { background: #252a35; padding: 15px; border-radius: 15px; margin: 10px 0; text-align: right; border-right: 5px solid #00c853; }
-        .btn { 
-            background: #e5a93d; color: white; border: none; padding: 20px; border-radius: 40px; 
-            font-size: 1.3em; font-weight: bold; width: 100%; margin-top: 20px; 
-            cursor: pointer; box-shadow: 0 5px 15px rgba(229, 169, 61, 0.4);
+        :root { --bg-dark: #0b0e14; --pi-gold: #e5a93d; --emerald: #00c853; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; margin: 0; overflow-x: hidden; }
+        
+        /* واجهة رسالة الكمبيوتر/المتصفح العادي */
+        #pc-welcome-screen {
+            display: none; /* مخفي افتراضياً ويظهر فقط للكمبيوتر */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 14, 20, 0.98); z-index: 9999;
+            justify-content: center; align-items: center; text-align: center; padding: 20px;
         }
+        .welcome-card {
+            max-width: 500px; background: #1a1d26; padding: 40px; border-radius: 30px;
+            border: 2px solid var(--pi-gold); box-shadow: 0 0 30px rgba(229, 169, 61, 0.2);
+        }
+        .pi-icon { font-size: 50px; margin-bottom: 20px; }
+        .download-btn {
+            background: var(--pi-gold); color: white; border: none; padding: 15px 30px;
+            border-radius: 30px; font-weight: bold; font-size: 1.1em; cursor: pointer;
+            text-decoration: none; display: inline-block; margin-top: 25px;
+        }
+
+        /* واجهة التطبيق الأصلية (تظهر فقط داخل باي) */
+        #app-content { display: none; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="title">BM NET Academy 🎓</div>
-    <div class="card"><strong>🧠 Stellar AI Analyzer</strong><p>تحليل الأكواد وتوصيات ذكية فورية.</p></div>
-    <div class="card"><strong>🛡️ الأمن السيبراني</strong><p>احتراف الحماية وصناعة الثروة الرقمية.</p></div>
+    <div id="pc-welcome-screen">
+        <div class="welcome-card">
+            <div class="pi-icon">🎓</div>
+            <h2 style="color: var(--pi-gold);">مرحباً بك في BM NET Academy</h2>
+            <p style="line-height: 1.7;">عذراً، لبدء رحلتك في تعلم البرمجيات والأمن السيبراني، يجب فتح هذا الرابط من داخل <b>تطبيق متصفح باي (Pi Browser)</b> حصراً.</p>
+            <p style="font-size: 0.9em; color: #aaa;">يرجى تحميل التطبيق من متجر Google Play أو App Store للمتابعة.</p>
+            <a href="https://minepi.com/pi-browser/" target="_blank" class="download-btn">تحميل Pi Browser الآن</a>
+        </div>
+    </div>
 
-    <button id="entry-button" class="btn">دخول الأكاديمية (3.14π)</button>
-</div>
+    <div id="app-content">
+        <iframe src="https://bmnet9733.pinet.com/main" style="width:100%; height:100vh; border:none;"></iframe>
+    </div>
 
-<script>
-    document.getElementById('entry-button').addEventListener('click', function() {
-        // التحويل المباشر للرابط الرسمي الخاص بك
-        window.location.href = "https://bmnet9733.pinet.com";
-    });
-</script>
+    <script>
+        function checkEnvironment() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isPiBrowser = userAgent.includes("pibrowser");
+            const pcScreen = document.getElementById('pc-welcome-screen');
+            const appContent = document.getElementById('app-content');
+
+            if (isPiBrowser) {
+                // إذا كان داخل باي براوزير: افتح التطبيق مباشرة
+                pcScreen.style.display = "none";
+                appContent.style.display = "block";
+                console.log("Welcome Pioneer! App is loading...");
+            } else {
+                // إذا كان على الكمبيوتر أو متصفح عادي: أظهر رسالة الترحيب والتوجيه
+                pcScreen.style.display = "flex";
+                appContent.style.display = "none";
+            }
+        }
+
+        // تشغيل الفحص فور تحميل الصفحة
+        window.onload = checkEnvironment;
+    </script>
 
 </body>
 </html>
