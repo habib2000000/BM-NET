@@ -3,77 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET Academy - Stellar AI 🎓</title>
-    
+    <title>BM NET Academy 🎓</title>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-    
     <script>
         const Pi = window.Pi;
         Pi.init({ version: "2.0" });
-
-        // نظام التحويل التلقائي لبيئة باي الآمنة
+        // التحويل التلقائي لبيئة باي الآمنة
         if (window.location.href.includes("pinet.com") || window.location.href.includes("pi")) {
             window.location.replace("pi://bmnet9733.pinet.com");
         }
     </script>
-
     <style>
-        :root { --bg-dark: #0b0e14; --card-bg: #1a1d26; --pi-gold: #e5a93d; --emerald: #00c853; --stellar-purple: #5e2a84; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
-        .app-container { width: 100%; max-width: 450px; background: var(--card-bg); border-radius: 30px; padding: 25px; border: 1px solid #333; box-shadow: 0 15px 50px rgba(0,0,0,0.3); text-align: center; }
-        
-        .status-badge { background: var(--stellar-purple); padding: 8px 18px; border-radius: 20px; font-size: 0.85em; font-weight: bold; margin-bottom: 20px; display: inline-block; }
-        .header-title { color: var(--pi-gold); font-size: 1.8em; font-weight: bold; margin-bottom: 25px; border-bottom: 2px solid var(--stellar-purple); padding-bottom: 10px; }
-        
-        .feature-card { background: #252a35; padding: 18px; border-radius: 18px; margin: 15px 0; text-align: right; border-right: 5px solid var(--emerald); }
-        .feature-card strong { color: var(--emerald); display: block; margin-bottom: 5px; font-size: 1.1em; }
-        .feature-card p { margin: 0; color: #ccc; font-size: 0.95em; line-height: 1.5; }
-
-        .cta-btn { background: linear-gradient(90deg, var(--pi-gold), #d49835); color: white; border: none; padding: 20px; border-radius: 40px; font-size: 1.3em; font-weight: bold; width: 100%; margin-top: 30px; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(229, 169, 61, 0.3); }
-        .cta-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0b0e14; color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 90%; max-width: 400px; background: #1a1d26; border-radius: 30px; padding: 25px; text-align: center; border: 1px solid #333; }
+        .badge { background: #5e2a84; padding: 8px 15px; border-radius: 20px; font-size: 0.8em; margin-bottom: 15px; display: inline-block; }
+        .title { color: #e5a93d; font-size: 1.5em; font-weight: bold; margin-bottom: 25px; }
+        .card { background: #252a35; padding: 15px; border-radius: 15px; margin: 10px 0; text-align: right; border-right: 4px solid #00c853; }
+        .card strong { color: #00c853; display: block; }
+        .btn { background: #e5a93d; color: white; border: none; padding: 18px; border-radius: 35px; font-size: 1.2em; font-weight: bold; width: 100%; margin-top: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(229, 169, 61, 0.3); }
     </style>
 </head>
 <body>
-
-<div class="app-container">
-    <div class="status-badge">🚀 Powered by Deep Star AI</div>
-    <div class="header-title">BM NET Academy 🎓</div>
-
-    <div class="feature-card">
-        <strong>🧠 Stellar AI Analyzer 🧠</strong>
-        <p>تحليل عميق للأكواد (C++, Rust) مع فحص الأمان وتوصيات ذكية فورية.</p>
+    <div class="container">
+        <div class="badge">🚀 Powered by Deep Star AI</div>
+        <div class="title">BM NET Academy 🎓</div>
+        <div class="card"><strong>🧠 Stellar AI Analyzer 🧠</strong><p>تحليل عميق للأكواد مع فحص الأمان وتوصيات ذكية فورية.</p></div>
+        <div class="card"><strong>🛡️ الأمن السيبراني 🛡️</strong><p>تعلم حماية الأنظمة وصناعة الثروة الرقمية في 9 أيام.</p></div>
+        <div class="card"><strong>💎 اقتصاد الـ Web3 💎</strong><p>توثيق الشهادات على البلوكشين ونظام دفع 3.14π.</p></div>
+        <button onclick="enterAcademy()" class="btn">دخول الأكاديمية (3.14π)</button>
     </div>
-
-    <div class="feature-card">
-        <strong>🛡️ الأمن السيبراني 🛡️</strong>
-        <p>تعلم حماية الأنظمة وصناعة الثروة الرقمية في تحديات الـ 9 أيام.</p>
-    </div>
-
-    <div class="feature-card">
-        <strong>💎 اقتصاد الـ Web3 💎</strong>
-        <p>توثيق الشهادات على البلوكشين ونظام دفع متكامل بمبلغ 3.14π.</p>
-    </div>
-
-    <button onclick="startBMNET()" class="cta-btn">دخول الأكاديمية (3.14π)</button>
-</div>
-
-<script>
-    async function startBMNET() {
-        try {
-            // التوثيق الرسمي عبر متصفح باي
-            const auth = await Pi.authenticate(['username', 'payments'], function(payment) {
-                console.log("Processing payment for BM NET...");
-            });
-
-            if (auth) {
-                // التحويل المباشر للرابط الرسمي
-                window.location.replace("pi://bmnet9733.pinet.com");
+    <script>
+        async function enterAcademy() {
+            try {
+                const auth = await Pi.authenticate(['username', 'payments'], function(payment){});
+                if (auth) {
+                    window.location.replace("pi://bmnet9733.pinet.com");
+                }
+            } catch (e) {
+                alert("يرجى الدخول من Pi Browser لتفعيل نظام Stellar AI.");
             }
-        } catch (e) {
-            alert("يرجى الدخول من تطبيق Pi Browser لتتمكن من استخدام تقنيات Stellar AI.");
         }
-    }
-</script>
-
+    </script>
 </body>
 </html>
