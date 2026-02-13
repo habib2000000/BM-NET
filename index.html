@@ -15,58 +15,60 @@
         :root { --bg-dark: #0b0e14; --pi-gold: #e5a93d; --emerald: #00c853; }
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; margin: 0; overflow-x: hidden; }
         
-        /* واجهة رسالة الكمبيوتر/المتصفح العادي */
+        /* واجهة رسالة الكمبيوتر المعتمدة على تصميمك */
         #pc-welcome-screen {
-            display: none; /* مخفي افتراضياً ويظهر فقط للكمبيوتر */
+            display: none; 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(11, 14, 20, 0.98); z-index: 9999;
-            justify-content: center; align-items: center; text-align: center; padding: 20px;
+            background: #ffffff; color: #333; z-index: 9999;
+            flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
-        .welcome-card {
-            max-width: 500px; background: #1a1d26; padding: 40px; border-radius: 30px;
-            border: 2px solid var(--pi-gold); box-shadow: 0 0 30px rgba(229, 169, 61, 0.2);
-        }
-        .pi-icon { font-size: 50px; margin-bottom: 20px; }
-        .download-btn {
-            background: var(--pi-gold); color: white; border: none; padding: 15px 30px;
-            border-radius: 30px; font-weight: bold; font-size: 1.1em; cursor: pointer;
-            text-decoration: none; display: inline-block; margin-top: 25px;
-        }
+        .qr-section { max-width: 600px; padding: 40px; }
+        .qr-code { width: 250px; height: 250px; margin: 20px 0; border: 10px solid #f0f0f0; border-radius: 20px; }
+        .store-btns { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
+        .store-btns img { height: 45px; cursor: pointer; }
 
         /* واجهة التطبيق الأصلية (تظهر فقط داخل باي) */
-        #app-content { display: none; }
+        #app-content { display: none; width: 100%; height: 100vh; }
     </style>
 </head>
 <body>
 
     <div id="pc-welcome-screen">
-        <div class="welcome-card">
-            <div class="pi-icon">🎓</div>
-            <h2 style="color: var(--pi-gold);">مرحباً بك في BM NET Academy</h2>
-            <p style="line-height: 1.7;">عذراً، لبدء رحلتك في تعلم البرمجيات والأمن السيبراني، يجب فتح هذا الرابط من داخل <b>تطبيق متصفح باي (Pi Browser)</b> حصراً.</p>
-            <p style="font-size: 0.9em; color: #aaa;">يرجى تحميل التطبيق من متجر Google Play أو App Store للمتابعة.</p>
-            <a href="https://minepi.com/pi-browser/" target="_blank" class="download-btn">تحميل Pi Browser الآن</a>
+        <div class="qr-section">
+            <h1 style="font-size: 24px; color: #1a1a1a;">Scan QR Code to Download Pi Browser</h1>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bmnet9733.pinet.com" class="qr-code" alt="QR Code">
+            
+            <h2 style="font-size: 22px; margin-top: 10px;">Log in to Pi Ecosystem!</h2>
+            <p style="color: #666; font-size: 14px; margin: 20px 0;">يرجى تحميل Pi Browser للبدء في تعليم البرمجة. سجل دخولك أو أنشئ حساب Pi Network لتتمكن من الوصول لهذا المحتوى.</p>
+            
+            <div class="store-btns">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" style="height: 60px; margin-top: -8px;" alt="Google Play">
+            </div>
+            <a href="https://minepi.com/pi-browser/" style="display: block; margin-top: 20px; color: #5e2a84; text-decoration: none; font-weight: bold;">Download APK</a>
         </div>
     </div>
 
     <div id="app-content">
-        <iframe src="https://bmnet9733.pinet.com/main" style="width:100%; height:100vh; border:none;"></iframe>
+        <iframe src="https://habib2000000.github.io/BM-NET/dashboard" style="width:100%; height:100%; border:none;"></iframe>
     </div>
 
     <script>
         function checkEnvironment() {
             const userAgent = navigator.userAgent.toLowerCase();
+            // التحقق مما إذا كان المستخدم داخل متصفح باي الرسمي
             const isPiBrowser = userAgent.includes("pibrowser");
+            
             const pcScreen = document.getElementById('pc-welcome-screen');
             const appContent = document.getElementById('app-content');
 
             if (isPiBrowser) {
-                // إذا كان داخل باي براوزير: افتح التطبيق مباشرة
+                // إذا كان داخل باي: اخفِ رسالة التوجيه وافتح التطبيق مباشرة
                 pcScreen.style.display = "none";
                 appContent.style.display = "block";
-                console.log("Welcome Pioneer! App is loading...");
+                console.log("Welcome to BM NET Academy within Pi Ecosystem!");
             } else {
-                // إذا كان على الكمبيوتر أو متصفح عادي: أظهر رسالة الترحيب والتوجيه
+                // إذا كان على الكمبيوتر: أظهر رسالة التحويل
                 pcScreen.style.display = "flex";
                 appContent.style.display = "none";
             }
