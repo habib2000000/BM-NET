@@ -3,79 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET - بوابة التعليم الصارم</title>
+    <title>BM NET Academy - Gateway</title>
     
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
-        const Pi = window.Pi;
-        Pi.init({ version: "2.0" });
+        window.Pi.init({ version: "2.0" });
     </script>
 
     <style>
-        :root { --bg-dark: #0b0e14; --pi-gold: #e5a93d; --emerald: #00c853; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; margin: 0; overflow-x: hidden; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; color: #333; }
         
-        /* واجهة رسالة الكمبيوتر المعتمدة على تصميمك */
-        #pc-welcome-screen {
-            display: none; 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffffff; color: #333; z-index: 9999;
-            flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        /* واجهة الكمبيوتر والمتصفحات الخارجية */
+        #pc-interface {
+            display: none; /* مخفي ويظهر فقط بالذكاء البرمجي */
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
         }
-        .qr-section { max-width: 600px; padding: 40px; }
-        .qr-code { width: 250px; height: 250px; margin: 20px 0; border: 10px solid #f0f0f0; border-radius: 20px; }
-        .store-btns { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
-        .store-btns img { height: 45px; cursor: pointer; }
+        .card {
+            max-width: 450px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .logo { font-size: 50px; margin-bottom: 10px; }
+        .highlight { color: #5e2a84; font-weight: bold; }
+        .qr-area {
+            width: 200px;
+            height: 200px;
+            background: #f9f9f9;
+            margin: 20px auto;
+            border: 2px dashed #5e2a84;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .download-btn {
+            background-color: #5e2a84;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .download-btn:hover { background-color: #4a2168; }
 
-        /* واجهة التطبيق الأصلية (تظهر فقط داخل باي) */
-        #app-content { display: none; width: 100%; height: 100vh; }
+        /* واجهة التحميل داخل باي (تظهر للحظات فقط) */
+        #pi-loading {
+            display: none;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #0b0e14;
+            color: #e5a93d;
+        }
     </style>
 </head>
 <body>
 
-    <div id="pc-welcome-screen">
-        <div class="qr-section">
-            <h1 style="font-size: 24px; color: #1a1a1a;">Scan QR Code to Download Pi Browser</h1>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bmnet9733.pinet.com" class="qr-code" alt="QR Code">
+    <div id="pc-interface">
+        <div class="card">
+            <div class="logo">🎓</div>
+            <h1 style="color: #5e2a84;">أكاديمية BM NET</h1>
+            <p>مرحباً بك! لبدء <span class="highlight">كورسات البرمجة</span> واحتراف الأمن السيبراني في الإيكوسيستيم الرسمي، يجب استخدام متصفح باي.</p>
             
-            <h2 style="font-size: 22px; margin-top: 10px;">Log in to Pi Ecosystem!</h2>
-            <p style="color: #666; font-size: 14px; margin: 20px 0;">يرجى تحميل Pi Browser للبدء في تعليم البرمجة. سجل دخولك أو أنشئ حساب Pi Network لتتمكن من الوصول لهذا المحتوى.</p>
-            
-            <div class="store-btns">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" style="height: 60px; margin-top: -8px;" alt="Google Play">
+            <div class="qr-area">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bmnet9733.pinet.com" alt="QR Code">
             </div>
-            <a href="https://minepi.com/pi-browser/" style="display: block; margin-top: 20px; color: #5e2a84; text-decoration: none; font-weight: bold;">Download APK</a>
+
+            <p style="font-size: 0.9em; color: #666;">قم بفتح تطبيق <span class="highlight">Pi Browser</span> وابحث عن الرابط الخاص بنا للمتابعة.</p>
+            
+            <a href="https://minepi.com/pi-browser/" target="_blank" class="download-btn">تحميل تطبيق Pi Browser</a>
         </div>
     </div>
 
-    <div id="app-content">
-        <iframe src="https://habib2000000.github.io/BM-NET/dashboard" style="width:100%; height:100%; border:none;"></iframe>
+    <div id="pi-loading">
+        <h2>جاري دخـول الأكاديمية...</h2>
     </div>
 
     <script>
-        function checkEnvironment() {
+        (function() {
             const userAgent = navigator.userAgent.toLowerCase();
-            // التحقق مما إذا كان المستخدم داخل متصفح باي الرسمي
+            // اكتشاف ما إذا كان المستخدم داخل تطبيق Pi Browser
             const isPiBrowser = userAgent.includes("pibrowser");
             
-            const pcScreen = document.getElementById('pc-welcome-screen');
-            const appContent = document.getElementById('app-content');
+            const pcInterface = document.getElementById('pc-interface');
+            const piLoading = document.getElementById('pi-loading');
 
             if (isPiBrowser) {
-                // إذا كان داخل باي: اخفِ رسالة التوجيه وافتح التطبيق مباشرة
-                pcScreen.style.display = "none";
-                appContent.style.display = "block";
-                console.log("Welcome to BM NET Academy within Pi Ecosystem!");
+                // إذا كان داخل باي: إخفاء كل شيء والتحويل فوراً للرابط الرسمي
+                piLoading.style.display = 'flex';
+                window.location.replace("https://bmnet9733.pinet.com");
             } else {
-                // إذا كان على الكمبيوتر: أظهر رسالة التحويل
-                pcScreen.style.display = "flex";
-                appContent.style.display = "none";
+                // إذا كان على الكمبيوتر أو متصفح عادي: إظهار رسالة الترحيب والتحميل
+                pcInterface.style.display = 'flex';
+                piLoading.style.display = 'none';
             }
-        }
-
-        // تشغيل الفحص فور تحميل الصفحة
-        window.onload = checkEnvironment;
+        })();
     </script>
 
 </body>
