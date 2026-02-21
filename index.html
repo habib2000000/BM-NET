@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET - رمضان مبارك 🌙</title>
+    <title>BM NET - بوابة التعليم 🌙</title>
     
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
@@ -12,114 +12,64 @@
     </script>
 
     <style>
-        :root { 
-            --bg-dark: #0b0e14; 
-            --pi-gold: #e5a93d; 
-            --card-bg: #1a1f26;
-            --emerald: #00c853; 
-        }
+        :root { --bg-dark: #0b0e14; --pi-gold: #e5a93d; --card-bg: #1a1f26; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; margin: 0; text-align: center; }
 
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: var(--bg-dark); 
-            color: white; 
-            margin: 0; 
-            overflow-x: hidden; 
-        }
+        /* زينة رمضان */
+        .ramadan-decor { display: flex; justify-content: space-around; padding: 15px; border-bottom: 1px solid var(--pi-gold); }
+        .decor-item { font-size: 24px; animation: swing 3s infinite ease-in-out; }
+        @keyframes swing { 0%, 100% { transform: rotate(15deg); } 50% { transform: rotate(-15deg); } }
 
-        /* زينة رمضان الراقصة */
-        .ramadan-decor {
-            display: flex;
-            justify-content: space-around;
-            padding: 15px 0;
-            background: linear-gradient(to bottom, rgba(229, 169, 61, 0.2), transparent);
-            border-bottom: 1px solid var(--pi-gold);
-        }
-
-        .decor-item {
-            font-size: 28px;
+        /* حاوية المحتوى */
+        .container { padding: 20px; }
+        .welcome-card { background: var(--card-bg); border-radius: 15px; padding: 20px; border: 1px solid var(--pi-gold); margin-bottom: 20px; }
+        
+        /* الزر المباشر للرابط */
+        .direct-link {
             display: inline-block;
-            transform-origin: top center;
-            animation: swing 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 5px var(--pi-gold));
-        }
-
-        @keyframes swing {
-            0%, 100% { transform: rotate(12deg); }
-            50% { transform: rotate(-12deg); }
-        }
-
-        /* رسالة التهنئة */
-        .welcome-msg {
-            text-align: center;
-            padding: 20px;
-            background: var(--card-bg);
-            margin: 15px;
-            border-radius: 15px;
-            border: 1px solid var(--pi-gold);
-        }
-
-        .welcome-msg h2 { color: var(--pi-gold); margin: 0 0 10px 0; }
-        .welcome-msg p { font-size: 14px; line-height: 1.6; margin: 0; }
-
-        /* مشغل الصوت */
-        .audio-section {
-            text-align: center;
-            margin: 20px 15px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-        }
-
-        audio {
-            width: 100%;
-            height: 35px;
-            margin-top: 10px;
-            filter: sepia(100%) saturate(200%) hue-rotate(10deg); /* تلوين ذهبي للمشغل */
-        }
-
-        /* زر الدخول (Pi Login) */
-        .login-btn {
-            display: block;
-            width: 80%;
-            margin: 20px auto;
-            background-color: var(--pi-gold);
-            color: var(--bg-dark);
-            text-align: center;
-            padding: 12px;
-            border-radius: 25px;
-            font-weight: bold;
+            background: linear-gradient(45deg, #e5a93d, #ffc107);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 30px;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(229, 169, 61, 0.4);
         }
+        .direct-link:hover { transform: scale(1.05); }
+
+        .qr-code { width: 200px; margin: 20px 0; border: 5px solid white; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div class="ramadan-decor">
         <span class="decor-item">🏮</span>
-        <span class="decor-item">⭐</span>
         <span class="decor-item">🌙</span>
         <span class="decor-item">⭐</span>
-        <span class="decor-item">🏮</span>
     </div>
 
-    <div class="welcome-msg">
-        <h2>رمضان مبارك 🌙</h2>
-        <p>عائلة BM NET الغالية، أعاده الله علينا وعليكم بالخير واليمن والبركات. جعل الله أيامكم في رمضان عامرة بالذكر والتعلم والنجاح.</p>
-    </div>
+    <div class="container">
+        <div class="welcome-card">
+            <h2 style="color: var(--pi-gold);">رمضان مبارك في BM NET 🌙</h2>
+            <p>إذا كنت تستخدم متصفح Pi ولم يفتح التطبيق تلقائياً، اضغط على الزر أدناه:</p>
+            
+            <a href="https://bmnet9733.pinet.com" class="direct-link">إفتح التطبيق الآن 🚀</a>
+        </div>
 
-    <div class="audio-section">
-        <span style="color: var(--pi-gold); font-weight: bold;">🎵 أجواء رمضان الزمان 🎵</span>
-        <audio controls>
-            <source src="Ahmed_Abdelqader_-_Wahawy_Ya_Wahawy.mp3" type="audio/mpeg">
-            متصفحك لا يدعم تشغيل الصوت.
-        </audio>
-    </div>
+        <div id="pc-instructions">
+            <h3>أو قم بمسح الرمز للدخول عبر الهاتف:</h3>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bmnet9733.pinet.com" class="qr-code">
+            <p style="font-size: 12px; color: #aaa;">رابط التطبيق: https://bmnet9733.pinet.com</p>
+        </div>
 
-    <a href="#" class="login-btn">تسجيل دخول Pi</a>
-
-    <div style="text-align: center; font-size: 12px; color: #666; margin-top: 20px;">
-        BM NET - بوابة التعليم الصارم 🎓
+        <div style="margin-top: 30px;">
+            <p>🎵 وحوي يا وحوي 🎵</p>
+            <audio controls style="width: 80%;">
+                <source src="Ahmed_Abdelqader_-_Wahawy_Ya_Wahawy.mp3" type="audio/mpeg">
+            </audio>
+        </div>
     </div>
 
 </body>
