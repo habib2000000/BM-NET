@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM NET - بوابة التعليم الصارم 🎓</title>
+    <title>BM NET - الأكاديمية الرمضانية 🌙</title>
     
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <script>
@@ -12,71 +12,129 @@
     </script>
 
     <style>
-        :root { --bg-dark: #0b0e14; --pi-gold: #e5a93d; --emerald: #00c853; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; margin: 0; overflow-x: hidden; }
-        
-        /* واجهة رسالة الكمبيوتر المعتمدة على تصميمك */
-        #pc-welcome-screen {
-            display: none; 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffffff; color: #333; z-index: 9999;
-            flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        :root { 
+            --pi-gold: #e5a93d; 
+            --bg-dark: #0b0e14; 
+            --white: #ffffff;
         }
-        .qr-section { max-width: 600px; padding: 40px; }
-        .qr-code { width: 250px; height: 250px; margin: 20px 0; border: 10px solid #f0f0f0; border-radius: 20px; }
-        .store-btns { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
-        .store-btns img { height: 45px; cursor: pointer; }
 
-        /* واجهة التطبيق الأصلية (تظهر فقط داخل باي) */
-        #app-content { display: none; width: 100%; height: 100vh; }
+        body, html { 
+            margin: 0; padding: 0; height: 100%; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--bg-dark); color: var(--white); 
+            overflow: hidden; 
+        }
+
+        /* --- زينة رمضان الراقصة --- */
+        .ramadan-decor {
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 1000; pointer-events: none;
+            display: flex; justify-content: space-around;
+        }
+        .string span {
+            display: inline-block; font-size: 30px;
+            transform-origin: top center;
+            animation: swing 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px var(--pi-gold));
+        }
+        @keyframes swing {
+            0%, 100% { transform: rotate(15deg); }
+            50% { transform: rotate(-15deg); }
+        }
+
+        /* --- واجهة الكمبيوتر (الترحيب) --- */
+        #pc-view {
+            display: none; flex-direction: column;
+            justify-content: center; align-items: center;
+            height: 100vh; text-align: center;
+            background: radial-gradient(circle, #1a1a2e 0%, #0b0e14 100%);
+        }
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px; border-radius: 30px;
+            border: 1px solid var(--pi-gold);
+            backdrop-filter: blur(10px);
+            max-width: 90%; width: 450px;
+        }
+        .btn-official {
+            background: var(--pi-gold); color: #000;
+            padding: 15px 30px; text-decoration: none;
+            border-radius: 50px; font-weight: bold;
+            display: inline-block; margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn-official:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--pi-gold); }
+
+        /* --- واجهة التطبيق داخل Pi Browser --- */
+        #app-view { display: none; width: 100%; height: 100vh; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* مشغل الصوت */
+        .audio-box { margin: 20px 0; border-top: 1px solid rgba(229, 169, 61, 0.3); padding-top: 20px; }
+        audio { width: 100%; height: 35px; border-radius: 5px; }
     </style>
 </head>
 <body>
 
-    <div id="pc-welcome-screen">
-        <div class="qr-section">
-            <h1 style="font-size: 24px; color: #1a1a1a;">Scan QR Code to Download Pi Browser</h1>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bmnet9733.pinet.com" class="qr-code" alt="QR Code">
-            
-            <h2 style="font-size: 22px; margin-top: 10px;">Log in to Pi Ecosystem!</h2>
-            <p style="color: #666; font-size: 14px; margin: 20px 0;">يرجى تحميل Pi Browser للبدء في تعليم البرمجة. سجل دخولك أو أنشئ حساب Pi Network لتتمكن من الوصول لهذا المحتوى.</p>
-            
-            <div class="store-btns">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" style="height: 60px; margin-top: -8px;" alt="Google Play">
-            </div>
-            <a href="https://minepi.com/pi-browser/" style="display: block; margin-top: 20px; color: #5e2a84; text-decoration: none; font-weight: bold;">Download APK</a>
+    <div class="ramadan-decor">
+        <div class="string">
+            <span>🏮</span>
+            <span style="animation-delay: 0.3s">⭐</span>
+            <span style="animation-delay: 0.6s">🌙</span>
+            <span style="animation-delay: 0.9s">🏮</span>
+            <span style="animation-delay: 1.2s">⭐</span>
         </div>
     </div>
 
-    <div id="app-content">
-        <iframe src="https://habib2000000.github.io/BM-NET/dashboard" style="width:100%; height:100%; border:none;"></iframe>
+    <div id="pc-view">
+        <div class="welcome-card">
+            <h1 style="color: var(--pi-gold); font-size: 28px;">BM NET 🎓</h1>
+            <p>أهلاً بك يا حبيب في بوابة التعليم الصارم</p>
+            <p style="font-size: 14px; color: #aaa;">رمضان كريم مبارك عليك وعلى رواد Pi</p>
+            
+            <div class="audio-box">
+                <p style="font-size: 13px; margin-bottom: 10px;">🎵 استمع إلى: وحوي يا وحوي</p>
+                <audio id="ramadanSong" controls loop>
+                    <source src="Ahmed_Abdelqader_-_Wahawy_Ya_Wahawy.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+            <a href="https://bmnet9733.pinet.com" class="btn-official">الدخول عبر الرابط الرسمي 🚀</a>
+            <p style="font-size: 12px; margin-top: 15px; color: var(--pi-gold);">* يرجى استخدام Pi Browser للوصول للمحتوى البرمجي</p>
+        </div>
+    </div>
+
+    <div id="app-view">
+        <iframe src="https://habib2000000.github.io/BM-NET/dashboard"></iframe>
     </div>
 
     <script>
-        function checkEnvironment() {
+        function runSmartSystem() {
             const userAgent = navigator.userAgent.toLowerCase();
-            // التحقق مما إذا كان المستخدم داخل متصفح باي الرسمي
+            // الكشف إذا كان المتصفح هو Pi Browser
             const isPiBrowser = userAgent.includes("pibrowser");
             
-            const pcScreen = document.getElementById('pc-welcome-screen');
-            const appContent = document.getElementById('app-content');
+            const pcView = document.getElementById('pc-view');
+            const appView = document.getElementById('app-view');
+            const song = document.getElementById('ramadanSong');
 
             if (isPiBrowser) {
-                // إذا كان داخل باي: اخفِ رسالة التوجيه وافتح التطبيق مباشرة
-                pcScreen.style.display = "none";
-                appContent.style.display = "block";
-                console.log("Welcome to BM NET Academy within Pi Ecosystem!");
+                // إعدادات الدخول من تطبيق باي
+                pcView.style.display = "none";
+                appView.style.display = "block";
             } else {
-                // إذا كان على الكمبيوتر: أظهر رسالة التحويل
-                pcScreen.style.display = "flex";
-                appContent.style.display = "none";
+                // إعدادات الدخول من الكمبيوتر
+                pcView.style.display = "flex";
+                appView.style.display = "none";
+                
+                // محاولة تشغيل الأغنية تلقائياً
+                song.play().catch(() => {
+                    console.log("التشغيل التلقائي يحتاج نقرة من المستخدم.");
+                });
             }
         }
 
-        // تشغيل الفحص فور تحميل الصفحة
-        window.onload = checkEnvironment;
+        window.onload = runSmartSystem;
     </script>
-
 </body>
 </html>
